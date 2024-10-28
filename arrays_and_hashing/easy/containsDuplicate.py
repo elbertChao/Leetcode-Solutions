@@ -1,4 +1,5 @@
 # Description: my implementation for the solution for the Contains Duplicate problem on leetcode
+# Problem: Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
 # Difficulty: easy
 # Author: Elbert C.
 
