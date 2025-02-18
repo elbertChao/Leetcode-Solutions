@@ -8,19 +8,15 @@
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        # create hashset that will hold the integers to check if the value
-        # with the current number you're checking equals your sum
-        hashset = set()
+        mapCheck = {}
 
-        # interate through the list of integers to check if it sums to the
-        # target of previously read values in the hashset
-        for i in range(0, len(nums)):
-            difference = target - nums[i]
-
-            # check if the other number (difference) that makes the sum to target
-            # exists in the hashset, if it does then we found our two
-            # integer sum value
-            if difference in hashset:
-                index = nums.index(difference)
-                return [index, i]
-            hashset.add(nums[i])
+        # use value:index pairs
+        for i, num in enumerate(nums):
+            answer = target - num # answer number we are searching for
+            # 2 cases depending on if the ordering of the numbers in the given nums list is
+            # in ascending or descending or random order
+            if answer in mapCheck and mapCheck[answer] > i:
+                return [i, mapCheck[answer]]
+            if answer in mapCheck and mapCheck[answer] < i:
+                return [mapCheck[answer], i]
+            mapCheck[num] = i
