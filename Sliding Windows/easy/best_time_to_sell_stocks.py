@@ -6,7 +6,6 @@
 # Author: Elbert C.
 
 class Solution:
-    class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         l, r, max_profit = 0, 1, 0
 
