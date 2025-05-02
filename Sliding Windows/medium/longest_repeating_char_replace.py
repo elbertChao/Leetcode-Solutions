@@ -5,17 +5,38 @@
 # Difficulty: medium
 # Author: Elbert C.
 
+################      O(26 * n) solution    ##########################
+# class Solution:
+#     def characterReplacement(self, s: str, k: int) -> int:
+#         count = {} # hashmap to keep key-value pairs
+#         l, longest = 0, 0
+
+#         for r in range(len(s)):
+#             count[s[r]] = count.get(s[r], 0) + 1
+            
+#             # check validity of sliding window
+#             # meaning: window_len - max_freq <= k
+#             if (r - l + 1) - max(count.values()) > k: # this means it is NOT valid
+#                 count[s[l]] -= 1
+#                 l += 1
+#             longest = max(longest, r - l + 1)
+        
+#         return longest
+
+################      O(n) solution    ##########################
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         count = {} # hashmap to keep key-value pairs
-        l, longest = 0, 0
+        l, longest, max_freq = 0, 0, 0
 
         for r in range(len(s)):
             count[s[r]] = count.get(s[r], 0) + 1
+
+            max_freq = max(max_freq, count[s[r]]) # update max frequency of the current character
             
             # check validity of sliding window
             # meaning: window_len - max_freq <= k
-            if (r - l + 1) - max(count.values()) > k: # this means it is NOT valid
+            if (r - l + 1) - max_freq > k: # this means it is NOT valid
                 count[s[l]] -= 1
                 l += 1
             longest = max(longest, r - l + 1)
