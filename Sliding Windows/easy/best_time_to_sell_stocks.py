@@ -5,6 +5,12 @@
 # Difficulty: easy
 # Author: Elbert C.
 
+from typing import List
+
+# OPTIMIZED SOLUTION
+# This is a two-pointer technique or sliding window technique to find the maximum profit.
+# The time complexity is O(n) and the space complexity is O(1). Since worst case we will
+# have to traverse the entire array to find the maximum profit.
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         l, r, max_profit = 0, 1, 0
@@ -15,10 +21,29 @@ class Solution:
                 profit = prices[r] - prices[l]
                 if profit > max_profit:
                     max_profit = profit
-                else:
-                    r += 1 # continue moving right to see if there is better time to sell
+                r += 1 # continue moving right to see if there is better time to sell
             else: # wrong location, move both pointers to their new locations
                 l = r
                 r += 1
 
         return max_profit
+    
+# BRUTE FORCE SOLUTION
+# This is a brute force solution to find the maximum profit.
+# time complexity is O(n^2) and the space complexity is O(1). Since we will have to traverse the entire array
+
+# class Solution:
+#     def maxProfit(self, prices: List[int]) -> int:
+#         max_profit = 0
+#         amount = 0
+#         for i in range(0, len(prices)):
+#             for j in range(i+1, len(prices)):
+#                 amount = prices[j] - prices[i]
+#                 if amount > max_profit:
+#                     max_profit = amount
+
+#         return max_profit
+    
+
+max_profit = Solution().maxProfit([7, 1, 5, 3, 6, 4])
+print(max_profit)
