@@ -22,10 +22,10 @@ class Solution:
         # Inefficient, TC: O(n^2) since we are checking each interval and require 
 
         # --------- MORE EFFICIENT WAY (Sorting and storing could be entire array n) ----------
-        # TC: O(nlogn), SC: O(n)
+        # TC: O(nlogn) since thats the TC for .sort() function and it dominates the O(n) linear search performed afterwards, SC: O(n)
 
         # Sort the array first so that we have an ascending order to work with
-        # Initially we can use variable prev as the first interval to compare with others
+        # Initially we can use variable 'prev' as the first interval to compare with others
         # Iterate and check if the first number in our next interval is LESS THAN or EQUAL to previous interval's max number
         # If so only update prev's ending number, and continue
         # Else append that new non-overlapped interval and continue iterating
