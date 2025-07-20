@@ -11,22 +11,43 @@ from typing import List
 # This is a two-pointer technique or sliding window technique to find the maximum profit.
 # The time complexity is O(n) and the space complexity is O(1). Since worst case we will
 # have to traverse the entire array to find the maximum profit.
+# class Solution:
+#     def maxProfit(self, prices: List[int]) -> int:
+#         l, r, max_profit = 0, 1, 0
+
+#         # iterate while the right pointer hasnt reached the end of the array
+#         while r < len(prices):
+#             if prices[l] < prices[r]: # check if we are at the right location for pointers for profit
+#                 profit = prices[r] - prices[l]
+#                 if profit > max_profit:
+#                     max_profit = profit
+#                 r += 1 # continue moving right to see if there is better time to sell
+#             else: # wrong location, move both pointers to their new locations
+#                 l = r
+#                 r += 1
+
+#         return max_profit
+
+# 2 Pointers practice again:
+# Use 2 pointers 'buy' & 'sell'
+# only need to move sell to check for profits
+# move both pointers if we aren't at a point of profit
+# 1 pass through array so its O(n) TC and O(1) SC since its constant space
+
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        l, r, max_profit = 0, 1, 0
+        buy, sell, max = 0, 1, 0
 
-        # iterate while the right pointer hasnt reached the end of the array
-        while r < len(prices):
-            if prices[l] < prices[r]: # check if we are at the right location for pointers for profit
-                profit = prices[r] - prices[l]
-                if profit > max_profit:
-                    max_profit = profit
-                r += 1 # continue moving right to see if there is better time to sell
-            else: # wrong location, move both pointers to their new locations
-                l = r
-                r += 1
-
-        return max_profit
+        while sell < len(prices):
+            profit = prices[sell] - prices[buy]
+            if profit > 0:
+               if profit > max:
+                   max = profit
+               sell += 1
+            else:
+                buy = sell
+                sell = buy + 1
+        return max
     
 # BRUTE FORCE SOLUTION
 # This is a brute force solution to find the maximum profit.
@@ -43,7 +64,7 @@ class Solution:
 #                     max_profit = amount
 
 #         return max_profit
-    
 
-max_profit = Solution().maxProfit([7, 1, 5, 3, 6, 4])
+max_profit = Solution().maxProfit([2, 4, 1]) #[7, 1, 5, 3, 6, 4]
 print(max_profit)
+
