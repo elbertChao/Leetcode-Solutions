@@ -78,7 +78,7 @@ class Solution:
             while queue: # while the queue isnt empty keep searching in adjacent directions
                 # pop from our queue
                 row, col = queue.popleft()
-                directions = [[0,1],[0,-1],[1,0],[-1,0]] # NSEW
+                directions = [[0,1],[0,-1],[1,0],[-1,0]] # SNWE
                 for dr, dc in directions: # Check if we are in bounds of our grid still, it is STILL land, and not ALREADY visited
                     r, c = row + dr, col + dc
                     if (r in range(rows) and
