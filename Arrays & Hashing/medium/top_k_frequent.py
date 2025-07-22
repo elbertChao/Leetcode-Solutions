@@ -1,5 +1,5 @@
 # Question # 347 in Arrays
-# Description: my implementation for the solution for the First Completely Painted Row or Column problem on leetcode
+# Description: my implementation for the solution for the Top K Frequent Elements problem on leetcode
 # Problem: Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
 # Difficulty: medium
 # Author: Elbert C.
