@@ -4,7 +4,7 @@
 # Difficulty: medium
 # Author: Elbert C.
 
-from typing import List
+from typing import List, Self
 
 # O(nlogn) Solution
 # class Solution:
@@ -58,3 +58,6 @@ class Solution:
             
             
         return ans
+    
+test = Solution().findMinDifference(['00:00', '23:59'])
+print(test)
