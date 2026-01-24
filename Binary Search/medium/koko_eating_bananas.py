@@ -11,6 +11,7 @@
 import math
 from typing import List
 
+# O(nlogm) # where m is the max piles number and n is the number of piles we have
 
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
